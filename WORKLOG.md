@@ -2,20 +2,10 @@
 
 ## GROUP MEMBER 1
 
-### date x
+### 5/22
 
-info
+Made Square class with initialized position and color that shows up properly.
 
-### date y
-
-info
-
-
-## GROUP MEMBER 2
-
-### date x
-
-info
 
 ### date y
 
