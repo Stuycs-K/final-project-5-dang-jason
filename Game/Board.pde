@@ -18,7 +18,9 @@ public class Board{
    void drawBoard(){
      for (Square s : board){
        s.display();
+      
      }
+     
    }
  
 }

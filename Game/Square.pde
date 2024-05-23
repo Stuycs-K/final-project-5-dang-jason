@@ -11,6 +11,7 @@ public class Square{
       position = new PVector(200 + (50 * file), 600 - (50 * rank));
     }
     
+    
     void display(){
        fill(c);
        noStroke();
