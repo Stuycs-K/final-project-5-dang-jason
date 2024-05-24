@@ -9,6 +9,8 @@ void setup(){
   text("Start New Game", 250, 490);
   WPawn = loadImage("Pieces/WPawn.png");
   WPawn.resize(80, 80);
+  BPawn = loadImage("Pieces/BPawn.png");
+  BPawn.resize(80,80);
 }
 
 void draw(){

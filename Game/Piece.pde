@@ -6,9 +6,7 @@ public class Piece{
   
   public Piece(int x, int y, String name, PImage img){
     this.name = name;
-    if (name.equals("pawn")){
-      image(img, x, y);
-    }
+    image(img, x, y);
   }
   
   

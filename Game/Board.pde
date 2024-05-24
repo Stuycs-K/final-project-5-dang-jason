@@ -1,6 +1,7 @@
 public class Board{
    ArrayList<Square>board;
    ArrayList<Piece>whitePieces;
+   ArrayList<Piece>blackPieces;
    public Board(){
     board = new ArrayList<Square>();
     for (int i = 0; i < 8; i++){
@@ -17,10 +18,15 @@ public class Board{
    }
    
    void drawBoard(){
+     whitePieces = new ArrayList<Piece>();
+     blackPieces = new ArrayList<Piece>();
      for (Square s : board){
        s.display();
-       if (s.rank == 1){
-         whitePieces.add(new Piece(s.getPosX(), s.getPosY(),  "pawn", WPawn));
+       if (s.sqr().y == 1){
+          whitePieces.add(new Piece(s.getPosX(), s.getPosY(), "WPawn", WPawn));
+       }
+       if (s.sqr().y == 6){
+          blackPieces.add(new Piece(s.getPosX(), s.getPosY(), "BPawn", BPawn));
        }
      }
      

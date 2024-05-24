@@ -28,4 +28,8 @@ public class Square{
     public int getPosX(){
        return (int) position.x;
     }
+    
+    public PVector sqr(){
+       return new PVector(file,rank); 
+    }
 }
