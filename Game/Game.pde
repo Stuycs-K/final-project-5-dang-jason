@@ -1,6 +1,6 @@
 boolean isGame = false;
 static boolean onButton = true;
-PImage WPawn, BPawn, WQueen, BQueen, WKing, BKing, WBishop, BBishop, WKnight, BKnight;
+PImage WPawn, BPawn, WQueen, BQueen, WKing, BKing, WBishop, BBishop, WKnight, BKnight, None;
 void setup(){
   size(1000, 880);
   rect(250, 450, 300, 50);

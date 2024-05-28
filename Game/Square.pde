@@ -2,8 +2,9 @@ public class Square{
     color c;
     PVector position;
     int rank,file;
-    public Square(int x, int y, String colour){
-      if (colour.equals("light")){
+    Piece piece;
+    public Square(int x, int y, Piece thing){
+      if ((x + y) % 2 == 0){
          c = color(250, 240, 210); 
       }
       else{
@@ -12,6 +13,11 @@ public class Square{
       rank = y;
       file = x;
       position = new PVector(180 + (80 * file), 680 - (80 * rank));
+      piece = thing;
+    }
+    
+    public Square(int x, int y){
+       this(x, y, new Piece());
     }
     
     
@@ -19,6 +25,8 @@ public class Square{
        fill(c);
        noStroke();
        square(position.x, position.y, 80);
+       piece.display();
+       
     }
     
     public int getPosY(){
