@@ -11,6 +11,8 @@ void setup(){
   WPawn.resize(80, 80);
   BPawn = loadImage("Pieces/BPawn.png");
   BPawn.resize(80,80);
+  WBishop = loadImage("Pieces/WBishop.png");
+  WBishop.resize(80, 80);
 }
 
 void draw(){
