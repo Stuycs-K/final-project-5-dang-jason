@@ -4,13 +4,16 @@ public class Square{
     int rank,file;
     Piece piece;
     String culor;
+    color light = color(250, 240, 210); 
+    color dark = color(190, 160, 70); 
+    color red = color(220, 90, 80);
     
     public Square(int x, int y, Piece thing){
       if ((x + y) % 2 == 0){
-         c = color(250, 240, 210); 
+         c = light;
       }
       else{
-         c = color(190, 160, 70); 
+         c = dark;
       }
       rank = y;
       file = x;
@@ -23,6 +26,9 @@ public class Square{
        this(x, y, new None());
     }
     
+    public void slct(){
+       c = red;
+    }
     
     void display(){
        fill(c);

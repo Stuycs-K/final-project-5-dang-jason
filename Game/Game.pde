@@ -26,7 +26,6 @@ void mousePressed(){
     //game start
     if (isGame){
     int index = update.whichSquare();
-    
       //shows what piece is clicked
       if (devSight){
       fill(bg);
