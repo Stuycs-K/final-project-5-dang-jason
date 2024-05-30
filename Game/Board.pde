@@ -40,6 +40,9 @@ public class Board{
     board.set(61, new Square(5, 7, new Bishop("black", 5, 7)) );
    }
    
+   public String getInfo(int index){
+     return board.get(index).getColor();
+   }
    
    //new Piece(180 + (80 * x), 680 - (80 * y), WPawn)
    void drawBoard(){

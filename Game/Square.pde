@@ -3,6 +3,8 @@ public class Square{
     PVector position;
     int rank,file;
     Piece piece;
+    String culor;
+    
     public Square(int x, int y, Piece thing){
       if ((x + y) % 2 == 0){
          c = color(250, 240, 210); 
@@ -14,6 +16,7 @@ public class Square{
       file = x;
       position = new PVector(180 + (80 * file), 680 - (80 * rank));
       piece = thing;
+      culor = thing.side;
     }
     
     public Square(int x, int y){
@@ -39,5 +42,9 @@ public class Square{
     
     public PVector sqr(){
        return new PVector(file,rank); 
+    }
+    
+    public String getColor(){
+        return culor;
     }
 }

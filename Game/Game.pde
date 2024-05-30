@@ -13,30 +13,35 @@ void setup(){
   text("Start New Game", 250, 490);
   Images images = new Images();
   images.loadImages();
-  
 }
 
 void draw(){
     
 }
 
+
 void mousePressed(){
-  //start menu
-  Button update = new Button(mouseX, mouseY);
-  if (update.whichButton().equals("Start")){
+    Button update = new Button(mouseX, mouseY);
     Board board = new Board();
+    //game start
+    if (isGame){
+    int index = update.whichSquare();
+    
+      //shows what piece is clicked
+      if (devSight){
+      fill(bg);
+      rect(75, 60, 150, 50);
+      fill(0);
+      text(board.getInfo(index) + index + "", 75, 100);
+    }
+    
+  }
+  
+  //start menu
+  if (update.whichButton().equals("Start")){
     board.drawBoard();
     onButton = false;
     isGame = true;
   }
-  //game start
-  if (isGame){
-    String whatSquare = update.whichSquare() + "";
-      if (devSight){
-      fill(bg);
-      rect(75, 70, 100, 50);
-      fill(0);
-      text(whatSquare, 100, 100);
-    }
-  }
+  
 }
