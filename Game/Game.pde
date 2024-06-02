@@ -30,6 +30,10 @@ void mousePressed(){
     if (isGame){
     lastSlct = index;
     index = update.whichSquare();
+    board.colorSquare(index, lastSlct);
+    
+    board.drawBoard();
+    
     
       //shows what piece is clicked
       if (devSight){

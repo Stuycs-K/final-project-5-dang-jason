@@ -47,6 +47,15 @@ public class Board{
      return board.get(index).getColor();
    }
    
+   public void colorSquare(int current, int last){
+     if (current > -1){
+        board.get(current).slct(); 
+     }
+     if (last > -1){
+        board.get(last).unslct(); 
+     }
+   }
+   
    //new Piece(180 + (80 * x), 680 - (80 * y), WPawn)
    void drawBoard(){
      for (Square s : board){

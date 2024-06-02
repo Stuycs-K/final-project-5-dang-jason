@@ -28,8 +28,17 @@ public class Square{
        this(x, y, new None());
     }
     
-    public void slct(){
+    public void slct(){ 
        c = red;
+    }
+    
+    public void unslct(){
+      if ((file + rank) % 2 == 0){
+         c = light;
+      }
+      else{
+         c = dark;
+      }
     }
     
     void display(){
