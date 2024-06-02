@@ -33,7 +33,7 @@ public class Button{
     
      for (int k = 0; k < 8; k++){
       int b = 680 - (80 * k);
-      if (y >= b && y <= b + 80){
+      if (y >= b && y < b + 80){
          result += k * 8; 
          isY = true;
       }

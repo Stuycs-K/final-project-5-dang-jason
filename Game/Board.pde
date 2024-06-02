@@ -41,6 +41,9 @@ public class Board{
    }
    
    public String getInfo(int index){
+     if (index == -1){
+        return "-1"; 
+     }
      return board.get(index).getColor();
    }
    
@@ -51,7 +54,7 @@ public class Board{
      }
      //just for testing:
      if (devSight){
-       for (int i = 0; i < board.size();i++){
+       for (int i = 0; i < board.size()-1;i++){
          fill(0);
          text(i, board.get(i).getPosX(),board.get(i).getPosY()+40); 
        }

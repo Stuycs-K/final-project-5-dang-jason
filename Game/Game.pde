@@ -3,6 +3,9 @@ boolean onButton = true;
 boolean devSight = true;
 PImage WPawn, BPawn, WQueen, BQueen, WKing, BKing, WBishop, BBishop, WKnight, BKnight, WRook, BRook, None;
 color bg = color(176, 188, 209);
+int lastSlct = -1;
+int index = -1;
+boolean whiteTurn;
 
 void setup(){
   background(bg);
@@ -25,13 +28,16 @@ void mousePressed(){
     Board board = new Board();
     //game start
     if (isGame){
-    int index = update.whichSquare();
+    lastSlct = index;
+    index = update.whichSquare();
+    
       //shows what piece is clicked
       if (devSight){
       fill(bg);
-      rect(75, 60, 150, 50);
+      rect(75, 60, 800, 50);
       fill(0);
-      text(board.getInfo(index) + index + "", 75, 100);
+        text("Current: " + board.getInfo(index) + index + "", 75, 100);
+        text("Last: " + board.getInfo(lastSlct) + lastSlct + "", 465, 100);
     }
     
   }
