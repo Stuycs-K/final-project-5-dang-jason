@@ -1,6 +1,6 @@
 boolean isGame = false;
 boolean onButton = true;
-boolean devSight = true;
+boolean devSight = false;
 PImage WPawn, BPawn, WQueen, BQueen, WKing, BKing, WBishop, BBishop, WKnight, BKnight, WRook, BRook, None;
 color bg = color(176, 188, 209);
 int lastSlct = -1;
