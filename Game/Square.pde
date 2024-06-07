@@ -8,7 +8,7 @@ public class Square{
     color dark = color(190, 160, 70); 
     color red = color(220, 90, 80);
     boolean canClick, hasPiece;
-    
+    boolean mLegal = false;
     public Square(int x, int y, Piece thing){
       if ((x + y) % 2 == 0){
          c = light;
@@ -42,10 +42,23 @@ public class Square{
       }
     }
     
+    public void makeLegal(){
+       mLegal = true; 
+    }
+
     void display(){
        fill(c);
        noStroke();
        square(position.x, position.y, 80);
+       fill(52, 235, 55);
+       if (mLegal){
+          ellipse(position.x + 40, position.y + 40, 20, 20); 
+       }
+       else{
+         fill(c);
+         noStroke();
+         square(position.x, position.y, 80);
+       }
        piece.display();
        
     }
@@ -72,5 +85,9 @@ public class Square{
     
     public boolean hasPiece(){
       return piece.isPiece;
+    }
+    
+    public Piece whatPiece(){
+       return piece; 
     }
 }

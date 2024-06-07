@@ -1,6 +1,6 @@
 public class Board{
    ArrayList<Square>board;
-   
+   ArrayList<Integer> legalMoves = new ArrayList<>();
    int xPos,yPos;
    
    
@@ -48,6 +48,11 @@ public class Board{
      return board.get(index).getColor();
    }
    
+   public Square getSquare(int index){
+     return board.get(index); 
+      
+   }
+   
    public void colorSquare(int current, int last){
      if (current > -1){
         board.get(current).slct(); 
@@ -55,11 +60,20 @@ public class Board{
      if (last > -1){
         board.get(last).unslct(); 
      }
+     //piece legal moves
+     
+     
+     legalMoves = board.get(current).whatPiece().howMove(current, board);
+     
+     for (int i = 0; i < legalMoves.size();i++){
+       board.get(legalMoves.get(i)).makeLegal(); 
+     }
    }
    
    public boolean canMove(int index){
      return board.get(index).canMoveS();
    }
+   
    
    //new Piece(180 + (80 * x), 680 - (80 * y), WPawn)
    void drawBoard(){
