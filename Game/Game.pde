@@ -6,6 +6,7 @@ color bg = color(176, 188, 209);
 int lastSlct = -1;
 int index = -1;
 boolean whiteTurn;
+boolean pieceClicked = false;
 
 void setup(){
   background(bg);
@@ -32,10 +33,24 @@ void mousePressed(){
     lastSlct = index;
     index = update.whichSquare();
     
+    
     if (board.canMove(index)){
+      pieceClicked = true;
       board.colorSquare(index, lastSlct);
       board.drawBoard();
     }
+    
+    if (pieceClicked && (lastSlct > -1)){
+      ArrayList<Integer> leegal = board.legalMove(lastSlct);
+      for (int i = 0; i < leegal.size(); i++){
+        if (index == leegal.get(i)){
+          board.movePiece(lastSlct, index, board.getSquare(lastSlct).whatPiece()); 
+          board.drawBoard();
+        }
+      }
+      whiteTurn = !whiteTurn;
+      pieceClicked = false;
+     }      
     
     
       //shows what piece is clicked
@@ -57,4 +72,13 @@ void mousePressed(){
     whiteTurn = true;
   }
   
+}
+
+void keyPressed(){
+   Board board = new Board();
+   if (key == 'g'){
+     board.getSquare(25).setPiece("pawn", "white");
+     text("BLAHHH", 500, 500);
+     board.drawBoard();
+   }
 }

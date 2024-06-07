@@ -90,4 +90,13 @@ public class Square{
     public Piece whatPiece(){
        return piece; 
     }
+    
+    public void setPiece(String newPiece, String team){
+      if (newPiece.equals("pawn")){
+        piece = new Pawn(team, file, rank);
+      }
+      if (newPiece.equals("")){
+        piece = new None();
+      }
+    }
 }
