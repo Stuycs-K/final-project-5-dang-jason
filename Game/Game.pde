@@ -33,23 +33,24 @@ void mousePressed(){
     lastSlct = index;
     index = update.whichSquare();
     
-    
-    if (board.canMove(index)){
-      pieceClicked = true;
-      board.colorSquare(index, lastSlct);
-      board.drawBoard();
+    if (index > -1){
+      if (board.canMove(index)){
+        pieceClicked = true;
+        board.colorSquare(index, lastSlct);
+        board.drawBoard();
+      }
     }
-    
-    if (pieceClicked && (lastSlct > -1)){
+    if (pieceClicked && (lastSlct > -1) && !(board.getSquare(index).hasPiece()) ){
       ArrayList<Integer> leegal = board.legalMove(lastSlct);
       for (int i = 0; i < leegal.size(); i++){
-        if (index == leegal.get(i)){
+        if (index == leegal.get(i) && pieceClicked && (lastSlct > -1) && !(board.getSquare(index).hasPiece())    ){
           board.movePiece(lastSlct, index, board.getSquare(lastSlct).whatPiece()); 
           board.drawBoard();
+          whiteTurn = !whiteTurn;
+          pieceClicked = false;
         }
+        
       }
-      whiteTurn = !whiteTurn;
-      pieceClicked = false;
      }      
     
     
