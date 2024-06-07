@@ -1,5 +1,6 @@
 public class Board{
    ArrayList<Square>board;
+   
    int xPos,yPos;
    
    
@@ -54,6 +55,10 @@ public class Board{
      if (last > -1){
         board.get(last).unslct(); 
      }
+   }
+   
+   public boolean canMove(int index){
+     return board.get(index).canMoveS();
    }
    
    //new Piece(180 + (80 * x), 680 - (80 * y), WPawn)

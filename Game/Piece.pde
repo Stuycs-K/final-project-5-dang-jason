@@ -2,7 +2,7 @@ public abstract class Piece{
   String name;
   ArrayList<Square> result;
   int x,y;
-  boolean isImg = false;
+  boolean isPiece = false;
   PImage img;
   String side = "";
   

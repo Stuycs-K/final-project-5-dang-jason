@@ -7,7 +7,7 @@ public class Square{
     color light = color(250, 240, 210); 
     color dark = color(190, 160, 70); 
     color red = color(220, 90, 80);
-    boolean canClick;
+    boolean canClick, hasPiece;
     
     public Square(int x, int y, Piece thing){
       if ((x + y) % 2 == 0){
@@ -22,6 +22,7 @@ public class Square{
       piece = thing;
       culor = thing.side;
       canClick = false;
+
     }
     
     public Square(int x, int y){
@@ -63,5 +64,13 @@ public class Square{
     
     public String getColor(){
         return culor;
+    }
+    
+    public boolean canMoveS(){
+       return (whiteTurn && culor.equals("white"));
+    }
+    
+    public boolean hasPiece(){
+      return piece.isPiece;
     }
 }

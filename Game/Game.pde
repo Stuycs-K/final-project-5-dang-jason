@@ -28,11 +28,14 @@ void mousePressed(){
     Board board = new Board();
     //game start
     if (isGame){
+      
     lastSlct = index;
     index = update.whichSquare();
-    board.colorSquare(index, lastSlct);
     
-    board.drawBoard();
+    if (board.canMove(index)){
+      board.colorSquare(index, lastSlct);
+      board.drawBoard();
+    }
     
     
       //shows what piece is clicked
@@ -51,6 +54,7 @@ void mousePressed(){
     board.drawBoard();
     onButton = false;
     isGame = true;
+    whiteTurn = true;
   }
   
 }
