@@ -16,26 +16,72 @@ public class Bishop extends Piece{
 
    public ArrayList<Integer> howMove(int index, ArrayList<Square> board){
      ArrayList<Integer> result = new ArrayList<>();
-     if (side.equals("black")){ 
-         if (!board.get(index-8).hasPiece()){
-           result.add(index-8);
-           if (index/8 == 6){
-             if (!board.get(index-16).hasPiece()){
-                result.add(index-16); 
+     int x = index % 8;
+     int y = index / 8;
+     
+     int tempR = x;
+     int tempL = x;
+     for (int r = y + 1; r < 8; r++){
+        if (tempR < 7){
+           if (board.get((r * 8) + tempR + 1).hasPiece()){
+             if (sameSide(board.get((r * 8) + tempR + 1).whatPiece()) ){
+               break;
+             }
+             else{
+               result.add((r * 8) + tempR + 1);    
+               break;   
              }
            }
-         }      
-     }    
-     else if (side.equals("white")){
-         if (!board.get(index+8).hasPiece()){
-           result.add(index+8);
-           if (index/8 == 1){
-             if (!board.get(index+16).hasPiece()){
-                result.add(index+16); 
+           result.add((r * 8) + tempR + 1);
+        }
+        
+        if (tempL > 0){
+           if (board.get((r * 8) + tempL - 1).hasPiece()){
+             if (sameSide(board.get((r * 8) + tempL - 1).whatPiece()) ){
+               break;
+             }
+             else{
+               result.add((r * 8) + tempL - 1);    
+               break;   
              }
            }
-         }
-     } 
+           result.add((r * 8) + tempL - 1);
+        }    
+        tempR++;
+        tempL--;
+     }
+     
+     tempR = x;
+     tempL = x;
+     for (int r = y - 1; r > 0; r--){
+        if (tempR < 7){
+           if (board.get((r * 8) + tempR + 1).hasPiece()){
+             if (sameSide(board.get((r * 8) + tempR + 1).whatPiece()) ){
+               break;
+             }
+             else{
+               result.add((r * 8) + tempR + 1);    
+               break;   
+             }
+           }
+           result.add((r * 8) + tempR + 1);
+        }
+        
+        if (tempL > 0){
+           if (board.get((r * 8) + tempL - 1).hasPiece()){
+             if (sameSide(board.get((r * 8) + tempL - 1).whatPiece()) ){
+               break;
+             }
+             else{
+               result.add((r * 8) + tempL - 1);    
+               break;   
+             }
+           }
+           result.add((r * 8) + tempL - 1);
+        }    
+        tempR++;
+        tempL--;
+     }     
      return result;
    }
 }
