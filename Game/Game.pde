@@ -1,6 +1,6 @@
 boolean isGame = false;
 boolean onButton = true;
-boolean devSight = true;
+boolean devSight = false;
 PImage WPawn, BPawn, WQueen, BQueen, WKing, BKing, WBishop, BBishop, WKnight, BKnight, WRook, BRook, None;
 color bg = color(176, 188, 209);
 int lastSlct = -1;
@@ -8,7 +8,9 @@ int index = -1;
 boolean whiteTurn;
 boolean pieceClicked = false;
 Board board = new Board();
-
+boolean gameEnd = false;
+int wSeconds,bSeconds;
+int count = 60;
 void setup(){
   background(bg);
   size(1000, 880);
@@ -19,10 +21,29 @@ void setup(){
   Images images = new Images();
   images.loadImages();
   board.setBoard();
+  wSeconds = 600;
+  bSeconds = 600;
 }
 
 void draw(){
+  if (isGame){
+  count -= 1;
+  if (count == 0){
+    if (whiteTurn){
+      wSeconds -= 1; 
+    }
+    else{
+      bSeconds -= 1; 
+    }
+    count = 60;
+  }
+    Clocks white = new Clocks(true, wSeconds);
+    Clocks black = new Clocks(false, bSeconds);
     
+  if (bSeconds == 0 || wSeconds == 0){
+     isGame = false; 
+  }
+  }
 }
 
 
