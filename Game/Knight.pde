@@ -5,6 +5,7 @@ public class Knight extends Piece{
      y = 680 - (80 * yPos);
      side = colour;
      isPiece = true;
+     name = "Knight";
      if (colour.equals("black")){
         img = BKnight; 
      }

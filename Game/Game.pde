@@ -41,7 +41,6 @@ void mousePressed(){
         board.colorSquare(index);
         board.drawBoard();
       }
-    }
     if (pieceClicked && (lastSlct > -1) && (board.canCap(board.getSquare(index)) || !board.getSquare(index).hasPiece() ) ){
       ArrayList<Integer> leegal = board.legalMove(lastSlct);
       for (int i = 0; i < leegal.size(); i++){
@@ -54,6 +53,8 @@ void mousePressed(){
         
       }
      }      
+    }
+  
     
     
       //shows what piece is clicked

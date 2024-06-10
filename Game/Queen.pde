@@ -5,6 +5,7 @@ public class Queen extends Piece{
      y = 680 - (80 * yPos);
      side = colour;
      isPiece = true;
+     name = "Queen";
      if (colour.equals("black")){
         img = BQueen; 
      }

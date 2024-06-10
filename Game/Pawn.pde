@@ -6,6 +6,7 @@ public class Pawn extends Piece{
      y = 680 - (80 * yPos);
      side = colour;
      isPiece = true;
+     name = "Pawn";
      if (colour.equals("black")){
         img = BPawn; 
      }

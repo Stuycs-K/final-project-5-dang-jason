@@ -5,6 +5,7 @@ public class Rook extends Piece{
      y = 680 - (80 * yPos);
      side = colour;
      isPiece = true;
+     name = "Rook";
      if (colour.equals("black")){
         img = BRook; 
      }
