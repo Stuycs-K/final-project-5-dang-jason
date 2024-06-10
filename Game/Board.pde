@@ -78,10 +78,17 @@ public class Board{
    public ArrayList<Integer> legalMove(int current){
      return board.get(current).whatPiece().howMove(current, board);       
    }
-   
-   public void movePiece(int current, int New, Square oldSquare){
-     board.get(New).setPiece("pawn", oldSquare.getColor());
-     board.get(current).setPiece("", "");
+   public int[] coord(int index){
+     int[] result = new int[2];
+     result[1] = index/8;
+     result[0] = index % 8;
+     return result;
+   }
+   public void movePiece(int current, int New, Square oldSquare, Piece piece){
+     int[] newC = coord(New);
+     int[] oldC = coord(current);
+     board.set(New, new Square(newC[0], newC[1], new Pawn(oldSquare.getColor(), newC[0], newC[1])) );
+     board.set(current, new Square(oldC[0], oldC[1], new None()) );     
    }
    
    public boolean canMove(int index){

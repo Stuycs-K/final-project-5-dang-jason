@@ -12,31 +12,10 @@ public abstract class Piece{
      image(img, x, y);
    }
    
-   public ArrayList<Integer> howMove(int index, ArrayList<Square> board){
-     ArrayList<Integer> result = new ArrayList<>();
-     if (side.equals("black")){ 
-         if (!board.get(index-8).hasPiece()){
-           result.add(index-8);
-           if (hasMoved == false){
-             if (!board.get(index-16).hasPiece()){
-                result.add(index-16); 
-             }
-           }
-         }      
-     }    
-     else if (side.equals("white")){
-         if (!board.get(index+8).hasPiece()){
-           result.add(index+8);
-           if (hasMoved == false){
-             if (!board.get(index+16).hasPiece()){
-                result.add(index+16); 
-             }
-           }
-         }
-     } 
-     return result;
+   public boolean sameSide(Piece other){
+     return (this.side.equals(other.side));
    }
-      
-  //public abstract ArrayList<Square> howMove();
+   
+  public abstract ArrayList<Integer> howMove(int index, ArrayList<Square> board);
   //public abstract ArrayList<Square> howCap();
 }
