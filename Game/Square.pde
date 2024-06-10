@@ -54,7 +54,7 @@ public class Square{
        square(position.x, position.y, 80);
        fill(52, 235, 55);
        if (mLegal){
-          ellipse(position.x + 40, position.y + 40, 20, 20); 
+          ellipse(position.x + 40, position.y + 40, 40, 40); 
        }
        else{
          fill(c);
@@ -91,6 +91,7 @@ public class Square{
        return false;
     }
     
+
     public boolean hasPiece(){
       return piece.isPiece;
     }

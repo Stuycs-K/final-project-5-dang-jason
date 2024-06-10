@@ -42,10 +42,10 @@ void mousePressed(){
         board.drawBoard();
       }
     }
-    if (pieceClicked && (lastSlct > -1) && !(board.getSquare(index).hasPiece()) ){
+    if (pieceClicked && (lastSlct > -1) && (board.canCap(board.getSquare(index)) || !board.getSquare(index).hasPiece() ) ){
       ArrayList<Integer> leegal = board.legalMove(lastSlct);
       for (int i = 0; i < leegal.size(); i++){
-        if (index == leegal.get(i) && pieceClicked && (lastSlct > -1) && !(board.getSquare(index).hasPiece())    ){
+        if (index == leegal.get(i) && pieceClicked && (lastSlct > -1) && (board.canCap(board.getSquare(index)) || !board.getSquare(index).hasPiece() )   ){
           board.movePiece(lastSlct, index, board.getSquare(lastSlct), board.getSquare(lastSlct).whatPiece()); 
           board.drawBoard();
           whiteTurn = !whiteTurn;

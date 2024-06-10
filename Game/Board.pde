@@ -98,7 +98,17 @@ public class Board{
      return false;
    }
    
-   
+    public boolean canCap(Square other){
+      if (whiteTurn && other.getColor().equals("black")){
+        return true;    
+      }
+      
+      if (!whiteTurn && other.getColor().equals("white")){
+         return true; 
+      }
+      return false; 
+    }
+    
    //new Piece(180 + (80 * x), 680 - (80 * y), WPawn)
    void drawBoard(){
      for (Square s : board){
