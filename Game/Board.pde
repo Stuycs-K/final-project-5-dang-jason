@@ -1,18 +1,19 @@
 public class Board{
-   ArrayList<Square>board;
+   ArrayList<Square>board = new ArrayList<Square>(); 
    int xPos,yPos;
    ArrayList<Integer> legalMoves = new ArrayList<>();   
-   
    
 //     xPos = 180 + (80 * x);
 //     yPos = 680 - (80 * i);
    public Board(){
-    board = new ArrayList<Square>();
-    for (int i = 0; i < 8; i++){
+     for (int i = 0; i < 8; i++){
       for (int x = 0; x < 8; x++){
         board.add(new Square(x, i, new None()) );
       }
-    }
+     }
+   }
+   
+   public void setBoard(){
     for (int a = 8; a < 16; a++){
        xPos = 180 + (80 * (a-8));
        board.set(a, new Square(a - 8, 1, new Pawn("white", a - 8, 1)) );
@@ -39,6 +40,9 @@ public class Board{
     board.set(58, new Square(2, 7, new Bishop("black", 2, 7)) );
     board.set(61, new Square(5, 7, new Bishop("black", 5, 7)) );
    }
+   public void testSet(){
+      board.set(26, new Square(2, 3, new Pawn("white", 2, 3)) ); 
+   }
    
    public String getInfo(int index){
      if (index == -1){
@@ -51,8 +55,13 @@ public class Board{
      return board.get(index); 
       
    }
-   
-   public void colorSquare(int current, int last){
+   public void unColorAll(){
+     for (int x = 0; x < 64; x++){
+        board.get(x).unslct(); 
+        board.get(x).unLegal(); 
+     } 
+   }
+   public void colorSquare(int current){
      if (current > -1){
         board.get(current).slct(); 
         legalMoves = board.get(current).whatPiece().howMove(current, board);
@@ -60,9 +69,6 @@ public class Board{
         for (int i = 0; i < legalMoves.size();i++){
           board.get(legalMoves.get(i)).makeLegal(); 
         }
-     }
-     if (last > -1){
-        board.get(last).unslct(); 
      }
      //piece legal moves
      
@@ -73,8 +79,8 @@ public class Board{
      return board.get(current).whatPiece().howMove(current, board);       
    }
    
-   public void movePiece(int current, int New, Piece piece){
-     board.get(New).setPiece("pawn", "white");
+   public void movePiece(int current, int New, Square oldSquare){
+     board.get(New).setPiece("pawn", oldSquare.getColor());
      board.get(current).setPiece("", "");
    }
    

@@ -7,6 +7,7 @@ int lastSlct = -1;
 int index = -1;
 boolean whiteTurn;
 boolean pieceClicked = false;
+Board board = new Board();
 
 void setup(){
   background(bg);
@@ -17,6 +18,7 @@ void setup(){
   text("Start New Game", 250, 490);
   Images images = new Images();
   images.loadImages();
+  board.setBoard();
 }
 
 void draw(){
@@ -26,17 +28,17 @@ void draw(){
 
 void mousePressed(){
     Button update = new Button(mouseX, mouseY);
-    Board board = new Board();
     //game start
     if (isGame){
-      
+    board.unColorAll();
+    board.drawBoard();  
     lastSlct = index;
     index = update.whichSquare();
-    
+   
     if (index > -1){
       if (board.canMove(index)){
         pieceClicked = true;
-        board.colorSquare(index, lastSlct);
+        board.colorSquare(index);
         board.drawBoard();
       }
     }
@@ -44,7 +46,7 @@ void mousePressed(){
       ArrayList<Integer> leegal = board.legalMove(lastSlct);
       for (int i = 0; i < leegal.size(); i++){
         if (index == leegal.get(i) && pieceClicked && (lastSlct > -1) && !(board.getSquare(index).hasPiece())    ){
-          board.movePiece(lastSlct, index, board.getSquare(lastSlct).whatPiece()); 
+          board.movePiece(lastSlct, index, board.getSquare(lastSlct)); 
           board.drawBoard();
           whiteTurn = !whiteTurn;
           pieceClicked = false;
@@ -72,13 +74,14 @@ void mousePressed(){
     isGame = true;
     whiteTurn = true;
   }
-  
+
 }
 
 void keyPressed(){
-   Board board = new Board();
    if (key == 'g'){
+     Board board = new Board();
      board.getSquare(25).setPiece("pawn", "white");
+     board.testSet();
      text("BLAHHH", 500, 500);
      board.drawBoard();
    }

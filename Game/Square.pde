@@ -45,7 +45,9 @@ public class Square{
     public void makeLegal(){
        mLegal = true; 
     }
-
+    public void unLegal(){
+       mLegal = false; 
+    }
     void display(){
        fill(c);
        noStroke();
@@ -80,7 +82,13 @@ public class Square{
     }
     
     public boolean canMoveS(){
-       return (whiteTurn && culor.equals("white"));
+       if (whiteTurn && culor.equals("white")){
+          return true; 
+       }
+       if (!whiteTurn && culor.equals("black")){
+          return true; 
+       }
+       return false;
     }
     
     public boolean hasPiece(){
