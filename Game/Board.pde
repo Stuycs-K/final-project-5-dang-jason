@@ -12,6 +12,12 @@ public class Board{
       }
      }
    }
+   public void promote(int index, String side){
+     
+     int x = index % 8;
+     int y = index / 8;
+     board.set(index, new Square(x, y, new Queen(side, x, y)) );
+   }
    
    public void setBoard(){
     for (int a = 8; a < 16; a++){
