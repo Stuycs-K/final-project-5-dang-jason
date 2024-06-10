@@ -2,5 +2,10 @@
 # APCS2 Final Project
 THIS DOCUMENT IS REQUIRED
 ## Group Info
+Jason Dang
+Group Name: King's Indian Defense
 ## Overview
+I tried making regular chess. The pieces move as they should and there are two clocks for each side. Legal moves are highlighted when you click on the piece and you can only capture enemy pieces. If your pawn reaches the opposite side of the board, it autopromotes to a queen. The game is won if either clock runs out or a king is taken.
 ## Instructions
+To use:
+Click start button and select whichever piece you want to move and then the square you want to move it to. If you want to go back to the home screen, press 'r'. If you want to resign, press 'x'.

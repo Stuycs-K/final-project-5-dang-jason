@@ -35,3 +35,4 @@ pawns can move 2 or 1 space(s)
 all other pieces can move and capture
 made clocks
 taking any king will end game, clocks running out ends game
+pawns autopromote to queens upon entering opposite side
