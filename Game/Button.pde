@@ -9,10 +9,10 @@ public class Button{
   
   public String whichButton(){
     if (onButton 
-    && (250 <= x) 
-    && (x <= 550) 
-    && (y>= 450) 
-    && (y<= 500) ){
+    && (350 <= x) 
+    && (x <= 650) 
+    && (y>= 415) 
+    && (y<= 465) ){
       return "Start";
     }
     

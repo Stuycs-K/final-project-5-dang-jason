@@ -44,6 +44,17 @@ public class Board{
       board.set(26, new Square(2, 3, new Pawn("white", 2, 3)) ); 
    }
    
+   public boolean hasKings(){
+     
+     int count = 0;
+     for (int i = 0; i < board.size();i++){
+       if (board.get(i).whatPiece().name.equals("King")){
+         count++;
+       }
+     }
+     return (count == 2);
+   }
+   
    public String getInfo(int index){
      if (index == -1){
         return "-1"; 

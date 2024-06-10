@@ -2,6 +2,7 @@ public class None extends Piece{
    
    public None(){
       isPiece = false; 
+      name = "None";
    }
    
    public void display(){ 

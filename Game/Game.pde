@@ -12,12 +12,13 @@ boolean gameEnd = false;
 int wSeconds,bSeconds;
 int count = 60;
 void setup(){
+  isGame = false;
   background(bg);
   size(1000, 880);
-  rect(250, 450, 300, 50);
+  rect(350, 415, 300, 50);
   textSize(44);
   fill(100);
-  text("Start New Game", 250, 490);
+  text("Start New Game", 350, 460);
   Images images = new Images();
   images.loadImages();
   board.setBoard();
@@ -28,22 +29,28 @@ void setup(){
 void draw(){
   if (isGame){
   count -= 1;
-  if (count == 0){
-    if (whiteTurn){
-      wSeconds -= 1; 
+    if (count == 0){
+      if (whiteTurn){
+        wSeconds -= 1; 
+      }
+      else{
+        bSeconds -= 1; 
+      }
+      count = 60;
     }
-    else{
-      bSeconds -= 1; 
+      Clocks white = new Clocks(true, wSeconds);
+      Clocks black = new Clocks(false, bSeconds);
+      
+    if (bSeconds == 0 || wSeconds == 0){
+       isGame = false; 
+       gameEnd = true;
     }
-    count = 60;
   }
-    Clocks white = new Clocks(true, wSeconds);
-    Clocks black = new Clocks(false, bSeconds);
-    
-  if (bSeconds == 0 || wSeconds == 0){
-     isGame = false; 
+  else if (gameEnd){
+    fill(0);
+    text("Game Over!", 350, 460);      
   }
-  }
+  
 }
 
 
@@ -66,14 +73,18 @@ void mousePressed(){
       ArrayList<Integer> leegal = board.legalMove(lastSlct);
       for (int i = 0; i < leegal.size(); i++){
         if (index == leegal.get(i) && pieceClicked && (lastSlct > -1) && (board.canCap(board.getSquare(index)) || !board.getSquare(index).hasPiece() )   ){
-          board.movePiece(lastSlct, index, board.getSquare(lastSlct), board.getSquare(lastSlct).whatPiece()); 
+          board.movePiece(lastSlct, index, board.getSquare(lastSlct), board.getSquare(lastSlct).whatPiece());
           board.drawBoard();
           whiteTurn = !whiteTurn;
           pieceClicked = false;
         }
         
       }
-     }      
+     }    
+    if (!board.hasKings()){
+      gameEnd = true;
+      isGame = false;
+    }
     }
   
     
@@ -100,11 +111,26 @@ void mousePressed(){
 }
 
 void keyPressed(){
-   if (key == 'g'){
-     Board board = new Board();
-     board.getSquare(25).setPiece("pawn", "white");
-     board.testSet();
-     text("BLAHHH", 500, 500);
-     board.drawBoard();
+   if (key == 'r'){
+    onButton = true;
+    isGame = false;
+    gameEnd = false;
+    background(bg);
+    size(1000, 880);
+    fill(255);
+    rect(350, 415, 300, 50);
+    textSize(44);
+    fill(100);
+    text("Start New Game", 350, 460);
+    Images images = new Images();
+    images.loadImages();
+    board.setBoard();
+    wSeconds = 600;
+    bSeconds = 600;
+   }
+   
+   if (key == 'x'){
+     wSeconds = 0;
+     bSeconds = 0;
    }
 }
